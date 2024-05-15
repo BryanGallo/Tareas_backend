@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import db from "./config/db.js";
 import authRouter from "./routes/authRoutes.js";
 
@@ -17,6 +18,12 @@ try {
 } catch (error) {
     console.log("error en la base");
 }
+
+app.use(
+    cors({
+        origin: "http://localhost:5173",
+    })
+);
 
 //Routing
 app.use("/auth", authRouter);
