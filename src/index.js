@@ -1,7 +1,13 @@
 import express from "express";
 import db from "./config/db.js";
+import authRouter from "./routes/authRoutes.js";
 
 const app = express();
+
+//para poder enviar respuestas tipo json
+app.use(express.json());
+//configura in middleware que sirve archivos estaticos de la ruta indicada
+app.use(express.static("./src/public"));
 
 //Conexion BDD
 try {
@@ -11,6 +17,9 @@ try {
 } catch (error) {
     console.log("error en la base");
 }
+
+//Routing
+app.use("/auth", authRouter);
 
 const port = 4000;
 //Servidor
