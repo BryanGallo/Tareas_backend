@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import db from "./config/db.js";
 import authRouter from "./routes/authRoutes.js";
+import rolRouter from "./routes/rolRoutes.js";
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use(
 
 //Routing
 app.use("/auth", authRouter);
+app.use("/rol", rolRouter);
 
 const port = 4000;
 //Servidor
